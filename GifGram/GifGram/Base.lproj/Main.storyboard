@@ -1,24 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gdW-PH-9z3">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Search-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="GifGram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="DCM-rY-6D3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1005.7971014492755" y="-259.15178571428572"/>
+        </scene>
+        <!--Trend View Controller-->
+        <scene sceneID="OR9-xf-mwC">
+            <objects>
+                <viewController storyboardIdentifier="trendPage" id="CXE-wy-iWq" customClass="TrendViewController" customModule="GifGram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oOM-at-5pe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qo5-UJ-vU0">
+                                <rect key="frame" x="5" y="46" width="404" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="WTh-Fr-hEg"/>
+                                    <constraint firstAttribute="height" constant="44" id="q5s-wd-w8Q"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="YD9-yj-JhC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="qo5-UJ-vU0" firstAttribute="leading" secondItem="YD9-yj-JhC" secondAttribute="leading" constant="5" id="S8v-U3-NTZ"/>
+                            <constraint firstItem="qo5-UJ-vU0" firstAttribute="top" secondItem="YD9-yj-JhC" secondAttribute="top" constant="2" id="WY6-dp-xtv"/>
+                            <constraint firstItem="YD9-yj-JhC" firstAttribute="trailing" secondItem="qo5-UJ-vU0" secondAttribute="trailing" constant="5" id="e5g-mm-WAz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="qo5-UJ-vU0" id="1AQ-FP-7e0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1JP-xC-aLs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1847.826086956522" y="-259.15178571428572"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="2a9-PT-fZI">
+            <objects>
+                <viewController storyboardIdentifier="searchPage" id="s0l-oC-VCK" customClass="SearchViewController" customModule="GifGram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GeA-cZ-8NR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="h5h-9w-C82">
+                                <rect key="frame" x="5" y="46" width="330.5" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="KAo-yH-1z3"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjA-iE-xOb">
+                                <rect key="frame" x="340.5" y="46" width="68.5" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="T4m-e6-JjB"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Krw-qG-xEa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Krw-qG-xEa" firstAttribute="trailing" secondItem="GjA-iE-xOb" secondAttribute="trailing" constant="5" id="FcW-1F-07G"/>
+                            <constraint firstItem="GjA-iE-xOb" firstAttribute="top" secondItem="Krw-qG-xEa" secondAttribute="top" constant="2" id="NXI-E0-iIp"/>
+                            <constraint firstItem="h5h-9w-C82" firstAttribute="leading" secondItem="Krw-qG-xEa" secondAttribute="leading" constant="5" id="UL1-4J-xok"/>
+                            <constraint firstItem="h5h-9w-C82" firstAttribute="top" secondItem="Krw-qG-xEa" secondAttribute="top" constant="2" id="iRk-fe-9aw"/>
+                            <constraint firstItem="GjA-iE-xOb" firstAttribute="leading" secondItem="h5h-9w-C82" secondAttribute="trailing" constant="5" id="w8m-8x-hTM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="6Uj-Jw-fqh"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="GjA-iE-xOb" id="54b-Xc-U35"/>
+                        <outlet property="searchBar" destination="h5h-9w-C82" id="KYC-Mp-xQq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qj3-FY-3f3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2674" y="-259"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="8nF-rG-FRJ">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="gdW-PH-9z3" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s0O-6f-L0J">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="A5C-A3-mCT"/>
+                        <segue destination="9VU-0b-lxK" kind="relationship" relationship="viewControllers" id="jCl-bd-hha"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YxY-CH-BAV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28.985507246376812" y="81.696428571428569"/>
+        </scene>
+        <!--Setting-->
+        <scene sceneID="4vB-l8-XnW">
+            <objects>
+                <viewController id="9VU-0b-lxK" customClass="SettingViewController" customModule="GifGram" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="p4f-eL-cOf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="BDS-nv-Yag"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Setting" image="gearshape" catalog="system" id="qp0-P9-2oI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nrz-A4-aSs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1006" y="443"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

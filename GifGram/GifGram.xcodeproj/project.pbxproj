@@ -9,13 +9,17 @@
 /* Begin PBXBuildFile section */
 		06AC419F28DBA6EA00D09C19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC419E28DBA6EA00D09C19 /* AppDelegate.swift */; };
 		06AC41A128DBA6EB00D09C19 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC41A028DBA6EB00D09C19 /* SceneDelegate.swift */; };
-		06AC41A328DBA6EB00D09C19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC41A228DBA6EB00D09C19 /* ViewController.swift */; };
+		06AC41A328DBA6EB00D09C19 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC41A228DBA6EB00D09C19 /* HomeViewController.swift */; };
 		06AC41A628DBA6EB00D09C19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06AC41A428DBA6EB00D09C19 /* Main.storyboard */; };
 		06AC41A828DBA6EB00D09C19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06AC41A728DBA6EB00D09C19 /* Assets.xcassets */; };
 		06AC41AB28DBA6EB00D09C19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06AC41A928DBA6EB00D09C19 /* LaunchScreen.storyboard */; };
 		06AC41B628DBA6EB00D09C19 /* GifGramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC41B528DBA6EB00D09C19 /* GifGramTests.swift */; };
 		06AC41C028DBA6EB00D09C19 /* GifGramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC41BF28DBA6EB00D09C19 /* GifGramUITests.swift */; };
 		06AC41C228DBA6EB00D09C19 /* GifGramUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC41C128DBA6EB00D09C19 /* GifGramUITestsLaunchTests.swift */; };
+		06AC41D728DBA78D00D09C19 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC41D628DBA78D00D09C19 /* SearchViewController.swift */; };
+		06AC41D928DBA79600D09C19 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC41D828DBA79600D09C19 /* SettingViewController.swift */; };
+		06AC41DE28DBB6E000D09C19 /* UIKit + Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC41DD28DBB6E000D09C19 /* UIKit + Publisher.swift */; };
+		06AC41E428DBBE6900D09C19 /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AC41E328DBBE6900D09C19 /* TrendViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +43,7 @@
 		06AC419B28DBA6EA00D09C19 /* GifGram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GifGram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06AC419E28DBA6EA00D09C19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		06AC41A028DBA6EB00D09C19 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		06AC41A228DBA6EB00D09C19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		06AC41A228DBA6EB00D09C19 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		06AC41A528DBA6EB00D09C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06AC41A728DBA6EB00D09C19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06AC41AA28DBA6EB00D09C19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,10 @@
 		06AC41BB28DBA6EB00D09C19 /* GifGramUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GifGramUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		06AC41BF28DBA6EB00D09C19 /* GifGramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifGramUITests.swift; sourceTree = "<group>"; };
 		06AC41C128DBA6EB00D09C19 /* GifGramUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifGramUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		06AC41D628DBA78D00D09C19 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		06AC41D828DBA79600D09C19 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		06AC41DD28DBB6E000D09C19 /* UIKit + Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIKit + Publisher.swift"; sourceTree = "<group>"; };
+		06AC41E328DBBE6900D09C19 /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +107,13 @@
 		06AC419D28DBA6EA00D09C19 /* GifGram */ = {
 			isa = PBXGroup;
 			children = (
+				06AC41D228DBA76000D09C19 /* Model */,
+				06AC41D128DBA75400D09C19 /* Utils */,
+				06AC41D028DBA74E00D09C19 /* Common */,
+				06AC41CF28DBA73A00D09C19 /* Scene */,
+				06AC41CE28DBA73200D09C19 /* Service */,
 				06AC419E28DBA6EA00D09C19 /* AppDelegate.swift */,
 				06AC41A028DBA6EB00D09C19 /* SceneDelegate.swift */,
-				06AC41A228DBA6EB00D09C19 /* ViewController.swift */,
 				06AC41A428DBA6EB00D09C19 /* Main.storyboard */,
 				06AC41A728DBA6EB00D09C19 /* Assets.xcassets */,
 				06AC41A928DBA6EB00D09C19 /* LaunchScreen.storyboard */,
@@ -125,6 +137,78 @@
 				06AC41C128DBA6EB00D09C19 /* GifGramUITestsLaunchTests.swift */,
 			);
 			path = GifGramUITests;
+			sourceTree = "<group>";
+		};
+		06AC41CE28DBA73200D09C19 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		06AC41CF28DBA73A00D09C19 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				06AC41D528DBA77F00D09C19 /* Setting */,
+				06AC41D328DBA77300D09C19 /* Home */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		06AC41D028DBA74E00D09C19 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		06AC41D128DBA75400D09C19 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				06AC41DD28DBB6E000D09C19 /* UIKit + Publisher.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		06AC41D228DBA76000D09C19 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		06AC41D328DBA77300D09C19 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				06AC41E228DBBE5D00D09C19 /* Trend */,
+				06AC41D428DBA77700D09C19 /* Search */,
+				06AC41A228DBA6EB00D09C19 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		06AC41D428DBA77700D09C19 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				06AC41D628DBA78D00D09C19 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		06AC41D528DBA77F00D09C19 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				06AC41D828DBA79600D09C19 /* SettingViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		06AC41E228DBBE5D00D09C19 /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				06AC41E328DBBE6900D09C19 /* TrendViewController.swift */,
+			);
+			path = Trend;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +342,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06AC41A328DBA6EB00D09C19 /* ViewController.swift in Sources */,
+				06AC41E428DBBE6900D09C19 /* TrendViewController.swift in Sources */,
+				06AC41A328DBA6EB00D09C19 /* HomeViewController.swift in Sources */,
 				06AC419F28DBA6EA00D09C19 /* AppDelegate.swift in Sources */,
+				06AC41D728DBA78D00D09C19 /* SearchViewController.swift in Sources */,
+				06AC41D928DBA79600D09C19 /* SettingViewController.swift in Sources */,
 				06AC41A128DBA6EB00D09C19 /* SceneDelegate.swift in Sources */,
+				06AC41DE28DBB6E000D09C19 /* UIKit + Publisher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

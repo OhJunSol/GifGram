@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SettingVIewController.swift
 //  GifGram
 //
 //  Created by 오준솔 on 2022/09/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,4 +16,3 @@ class ViewController: UIViewController {
 
 
 }
-
