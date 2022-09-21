@@ -15,52 +15,37 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Jec-0t-eBs">
+                                <rect key="frame" x="5" y="46" width="404" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="PtE-g9-Kye"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Jec-0t-eBs" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="Vqp-9D-PYr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jec-0t-eBs" secondAttribute="trailing" constant="5" id="eNp-eT-ILO"/>
+                            <constraint firstItem="Jec-0t-eBs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="v4E-oA-2hb"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="DCM-rY-6D3"/>
+                    <connections>
+                        <outlet property="searchBar" destination="Jec-0t-eBs" id="oRW-3P-FgG"/>
+                        <segue destination="s0l-oC-VCK" kind="presentation" identifier="moveToSearch" animates="NO" modalPresentationStyle="overCurrentContext" id="rGt-xo-mYm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1005.7971014492755" y="-259.15178571428572"/>
         </scene>
-        <!--Trend View Controller-->
-        <scene sceneID="OR9-xf-mwC">
-            <objects>
-                <viewController storyboardIdentifier="trendPage" id="CXE-wy-iWq" customClass="TrendViewController" customModule="GifGram" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oOM-at-5pe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="qo5-UJ-vU0">
-                                <rect key="frame" x="5" y="46" width="404" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="WTh-Fr-hEg"/>
-                                    <constraint firstAttribute="height" constant="44" id="q5s-wd-w8Q"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="YD9-yj-JhC"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="qo5-UJ-vU0" firstAttribute="leading" secondItem="YD9-yj-JhC" secondAttribute="leading" constant="5" id="S8v-U3-NTZ"/>
-                            <constraint firstItem="qo5-UJ-vU0" firstAttribute="top" secondItem="YD9-yj-JhC" secondAttribute="top" constant="2" id="WY6-dp-xtv"/>
-                            <constraint firstItem="YD9-yj-JhC" firstAttribute="trailing" secondItem="qo5-UJ-vU0" secondAttribute="trailing" constant="5" id="e5g-mm-WAz"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="searchBar" destination="qo5-UJ-vU0" id="1AQ-FP-7e0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1JP-xC-aLs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1847.826086956522" y="-259.15178571428572"/>
-        </scene>
         <!--Search View Controller-->
         <scene sceneID="2a9-PT-fZI">
             <objects>
-                <viewController storyboardIdentifier="searchPage" id="s0l-oC-VCK" customClass="SearchViewController" customModule="GifGram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="s0l-oC-VCK" customClass="SearchViewController" customModule="GifGram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GeA-cZ-8NR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -99,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qj3-FY-3f3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2674" y="-259"/>
+            <point key="canvasLocation" x="1952" y="-259"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8nF-rG-FRJ">
