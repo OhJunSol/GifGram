@@ -14,7 +14,7 @@ Gif 재생을 위해 SwiftyGif 라이브러리를 사용했습니다. pod instal
 
 Screen shot
 
-<image src="https://user-images.githubusercontent.com/112849158/191861997-ff5310e3-46bc-4cbf-a282-8cf9998196ef.png" width="300px" /><image src="https://user-images.githubusercontent.com/112849158/191862005-c3179b5e-b3c4-4c0e-9e90-04e950bfef17.png" width="300px" /><image src="https://user-images.githubusercontent.com/112849158/191862006-93f9dc45-a9ee-4adb-8de0-7a906b7af5f2.png" width="300px" />
+<image src="https://user-images.githubusercontent.com/112849158/191861997-ff5310e3-46bc-4cbf-a282-8cf9998196ef.png" width="200px" /><image src="https://user-images.githubusercontent.com/112849158/191862005-c3179b5e-b3c4-4c0e-9e90-04e950bfef17.png" width="200px" /><image src="https://user-images.githubusercontent.com/112849158/191862006-93f9dc45-a9ee-4adb-8de0-7a906b7af5f2.png" width="200px" />
 ```
 홈 화면에는 trending gif api를 이용하여 현재 자주 쓰이는 gif리스트 목록을 받아와 보여줍니다.
 기본적으로 2줄 레이아웃이 적용되어있고 gif이미지들은 애니메이션이 자동으로 재생됩니다.
@@ -24,7 +24,7 @@ Screen shot
 네트워크 에러가 발생했을 시 alert가 나옵니다.
 ```
 
-<image src="https://user-images.githubusercontent.com/112849158/191862011-78ede78c-553c-40e6-a37a-36454c433a86.png" width="300px" /><image src="https://user-images.githubusercontent.com/112849158/191862014-d7881a3a-faef-4854-bc08-7add14498963.png" width="300px" /><image src="https://user-images.githubusercontent.com/112849158/191862793-853c841d-6336-4d4c-a4ce-f09de74b96da.png" width="300px" />
+<image src="https://user-images.githubusercontent.com/112849158/191862011-78ede78c-553c-40e6-a37a-36454c433a86.png" width="200px" /><image src="https://user-images.githubusercontent.com/112849158/191862014-d7881a3a-faef-4854-bc08-7add14498963.png" width="200px" /><image src="https://user-images.githubusercontent.com/112849158/191862793-853c841d-6336-4d4c-a4ce-f09de74b96da.png" width="200px" />
 
 ```
 하단 세팅탭에서 Gif 리스트의 레이아웃 변경과 animaition 정지가 가능합니다.
