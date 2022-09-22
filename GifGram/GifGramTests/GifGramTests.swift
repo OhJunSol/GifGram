@@ -6,30 +6,115 @@
 //
 
 import XCTest
+import Combine
 @testable import GifGram
 
 class GifGramTests: XCTestCase {
 
+    private lazy var session: URLSession = {
+        let config = URLSessionConfiguration.ephemeral
+        return URLSession(configuration: config)
+    }()
+    private lazy var networkService = NetworkService(session: session)
+    private var cancellables: [AnyCancellable] = []
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        cancellables.forEach{ $0.cancel() }
+        cancellables.removeAll()
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func test_loadFinishedSuccessfully() throws {
+        
+        //Given
+        let expectation = self.expectation(description: "networkServiceExpectation")
+        let resource = Resource<GifResponse>.searchGifs(query: "joker", limit: 10, offset: 0)
+        var result: Result<GifResponse, Error>?
+        
+        //When
+        networkService.load(resource)
+            .map({ gifs -> Result<GifResponse, Error> in Result.success(gifs)})
+            .catch({ error -> AnyPublisher<Result<GifResponse, Error>, Never> in .just(.failure(error)) })
+            .sink(receiveValue: { value in
+                result = value
+                expectation.fulfill()
+            }).store(in: &cancellables)
+                    
+        // Then
+        self.waitForExpectations(timeout: 3.0, handler: nil)
+        guard case .success(let gifs) = result else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(gifs.meta.status, 200)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test_loadFailedWithRequestError() throws {
+        
+        //Given
+        let url = URL(string: "api.giphy.com/v1/gifs/search")! //protocol 제거
+        let parameters: [String : CustomStringConvertible] = [
+            "api_key": ApiConstants.apiKey,
+            "q": "joker",
+            "limit": 10,
+            "offset": 0,
+        ]
+        let resource = Resource<GifResponse>(url: url, parameters: parameters)
+        let expectation = self.expectation(description: "networkServiceExpectation")
+        var result: Result<GifResponse, Error>?
+        
+        //When
+        networkService.load(resource)
+            .map({ gifs -> Result<GifResponse, Error> in Result.success(gifs)})
+            .catch({ error -> AnyPublisher<Result<GifResponse, Error>, Never> in .just(.failure(error)) })
+            .sink(receiveValue: { value in
+                result = value
+                expectation.fulfill()
+            }).store(in: &cancellables)
+                    
+        // Then
+        self.waitForExpectations(timeout: 3.0, handler: nil)
+        guard case .failure(let error) = result,
+            let networkError = error as? NetworkError,
+            case NetworkError.invalidRequest = networkError else {
+            XCTFail()
+            return
+        }
+    }
+    
+    func test_loadFailedWithInternalError() throws {
+        
+        //Given
+        let url = URL(string: "https://api.giphy.com/v1/gifs/search/wrongURL")! //잘못된 URL
+        let parameters: [String : CustomStringConvertible] = [
+            "api_key": ApiConstants.apiKey,
+            "q": "joker",
+            "limit": 10,
+            "offset": 0,
+        ]
+        let resource = Resource<GifResponse>(url: url, parameters: parameters)
+        let expectation = self.expectation(description: "networkServiceExpectation")
+        var result: Result<GifResponse, Error>?
+        
+        //When
+        networkService.load(resource)
+            .map({ gifs -> Result<GifResponse, Error> in Result.success(gifs)})
+            .catch({ error -> AnyPublisher<Result<GifResponse, Error>, Never> in .just(.failure(error)) })
+            .sink(receiveValue: { value in
+                result = value
+                expectation.fulfill()
+            }).store(in: &cancellables)
+                    
+        // Then
+        self.waitForExpectations(timeout: 3.0, handler: nil)
+        guard case .failure(let error) = result,
+            let networkError = error as? NetworkError,
+            case NetworkError.dataLoadingError(statusCode: 404, _) = networkError else {
+            XCTFail()
+            return
         }
     }
 
