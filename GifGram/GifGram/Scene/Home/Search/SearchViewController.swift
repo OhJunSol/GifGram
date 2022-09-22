@@ -47,6 +47,34 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
             self?.navigationController?.popViewController(animated: false)
         }.store(in: &cancellables)
         
+        bind(viewModel: self.viewModel)
+        
+        //Search text did changed
+        searchBar.textPublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] searchText in
+                print(searchText)
+                guard let self = self else { return }
+                
+                //For throttled search
+                self.searchItem?.cancel()
+                guard !searchText.isEmpty else {
+                    self.reset()
+                    return
+                }
+                
+                let requestWorkItem = DispatchWorkItem { [weak self] in
+                    guard let self = self else { return }
+                    self.search(query: searchText)
+                }
+                
+                self.searchItem = requestWorkItem
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2),
+                                              execute: requestWorkItem)
+            }.store(in: &cancellables)
+    }
+    
+    private func bind(viewModel: SearchViewModel) {
         //Gif items update
         viewModel.$gifViewModels
             .receive(on: RunLoop.main)
@@ -72,30 +100,6 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
                 let layout = self?.collectionView.collectionViewLayout as? PinterestLayout
                 layout?.changeNumberOfColumns(numberOfColumns: numberOfColumns)
                 self?.collectionView.reloadSections(IndexSet(integer: 0))
-            }.store(in: &cancellables)
-        
-        //Search text did changed
-        searchBar.textPublisher
-            .receive(on: RunLoop.main)
-            .sink { [weak self] searchText in
-                print(searchText)
-                guard let self = self else { return }
-                
-                //For throttled search
-                self.searchItem?.cancel()
-                guard !searchText.isEmpty else {
-                    self.reset()
-                    return
-                }
-                
-                let requestWorkItem = DispatchWorkItem { [weak self] in
-                    guard let self = self else { return }
-                    self.search(query: searchText)
-                }
-                
-                self.searchItem = requestWorkItem
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2),
-                                              execute: requestWorkItem)
             }.store(in: &cancellables)
     }
 

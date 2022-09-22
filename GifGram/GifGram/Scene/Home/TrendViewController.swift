@@ -43,6 +43,13 @@ class TrendViewController: UIViewController, TrendViewControllerProtocol {
             self.performSegue(withIdentifier: "moveToSearch", sender: self)
         }.store(in: &cancellables)
         
+        bind(viewModel: self.viewModel)
+        
+        //Fetch Gifs
+        viewModel.fetchNextGifs()
+    }
+    
+    private func bind(viewModel: TrendViewModel) {
         //Gif items update
         viewModel.$gifViewModels
             .receive(on: RunLoop.main)
@@ -69,9 +76,6 @@ class TrendViewController: UIViewController, TrendViewControllerProtocol {
                 layout?.changeNumberOfColumns(numberOfColumns: numberOfColumns)
                 self?.collectionView.reloadSections(IndexSet(integer: 0))
             }.store(in: &cancellables)
-        
-        //Fetch Gifs
-        viewModel.fetchNextGifs()
     }
 
     private func showError(error: Error) {

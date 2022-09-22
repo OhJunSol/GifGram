@@ -11,6 +11,7 @@ import Combine
 
 protocol GifCollectionViewCellProtocol {
     var viewModel: GifViewModel? { get set }
+    func bind(viewModel: GifViewModel)
 }
 
 class GifCollectionViewCell: UICollectionViewCell, GifCollectionViewCellProtocol {
