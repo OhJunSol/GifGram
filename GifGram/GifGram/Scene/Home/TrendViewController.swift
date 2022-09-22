@@ -1,5 +1,5 @@
 //
-//  SearchViewController.swift
+//  TrendViewController.swift
 //  GifGram
 //
 //  Created by 오준솔 on 2022/09/22.
@@ -8,14 +8,12 @@
 import UIKit
 import Combine
 
-class SearchViewController: UIViewController {
+class TrendViewController: UIViewController {
 
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
-    private let viewModel = SearchViewModel()
-    private var searchItem: DispatchWorkItem?
+    private let viewModel = TrendViewModel()
     private var cancellables: Set<AnyCancellable> = []
     
     deinit {
@@ -25,22 +23,19 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.keyboardDismissMode = .onDrag
-        collectionView.backgroundColor = .clear
-        collectionView.register(GifCollectionViewCell.self,
-                                     forCellWithReuseIdentifier: "Cell")
         
         if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
         }
+        collectionView.backgroundColor = .clear
+        collectionView.register(GifCollectionViewCell.self,
+                                     forCellWithReuseIdentifier: "Cell")
         
-        //Auto focus
-        searchBar.becomeFirstResponder()
         
-        //Cancel button action
-        cancelButton.tapPublisher.sink {
-            [weak self] _ in
-            self?.navigationController?.popViewController(animated: false)
+        //Move to search scene when searchBar is clicked
+        searchBar.editingDidBeginPublisher.sink { _ in
+            self.searchBar.resignFirstResponder()
+            self.performSegue(withIdentifier: "moveToSearch", sender: self)
         }.store(in: &cancellables)
         
         //Gif items update
@@ -70,45 +65,10 @@ class SearchViewController: UIViewController {
                 self?.collectionView.reloadData()
             }.store(in: &cancellables)
         
-        //Search text did changed
-        searchBar.textPublisher
-            .receive(on: RunLoop.main)
-            .sink { [weak self] searchText in
-                print(searchText)
-                guard let self = self else { return }
-                
-                //For throttled search
-                self.searchItem?.cancel()
-                guard !searchText.isEmpty else {
-                    self.reset()
-                    return
-                }
-                
-                let requestWorkItem = DispatchWorkItem { [weak self] in
-                    guard let self = self else { return }
-                    self.search(query: searchText)
-                }
-                
-                self.searchItem = requestWorkItem
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2),
-                                              execute: requestWorkItem)
-            }.store(in: &cancellables)
+        //Fetch Gifs
+        viewModel.fetchNextGifs()
     }
 
-    private func reset() {
-        let layout = collectionView.collectionViewLayout as? PinterestLayout
-        layout?.reset()
-        viewModel.reset()
-        collectionView.reloadData()
-    }
-    
-    private func search(query: String) {
-        guard viewModel.query != query else { return }
-        
-        reset()
-        viewModel.search(query: query)
-    }
-    
     private func showError(error: Error) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -121,20 +81,8 @@ class SearchViewController: UIViewController {
     }
 }
 
-//SearchBar delegate
-extension SearchViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchItem?.cancel()
-        searchBar.resignFirstResponder()
-        
-        guard let query = searchBar.text, !query.isEmpty else { return }
-        search(query: query)
-    }
-}
-
 //Collection view delegate
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension TrendViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return viewModel.numberOfSections
     }
@@ -152,7 +100,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
-    //infinite scroll
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let position = scrollView.contentOffset.y
         
@@ -167,7 +114,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 //Pinterest layout delegate
-extension SearchViewController: PinterestLayoutDelegate {
+extension TrendViewController: PinterestLayoutDelegate {
+    func numberOfColumns() -> Int {
+        return viewModel.numberOfColumns
+    }
     
     func numberOfItemsInCollectionView() -> Int {
         return viewModel.count

@@ -60,6 +60,10 @@ extension UISearchBar {
     var textPublisher: AnyPublisher<String, Never> {
         self.searchTextField.textPublisher.eraseToAnyPublisher()
     }
+    
+    var editingDidBeginPublisher: AnyPublisher<Void, Never> {
+        self.searchTextField.editingDidBeginPublisher.eraseToAnyPublisher()
+    }
 }
 
 extension UITextField {
@@ -68,6 +72,12 @@ extension UITextField {
             .publisher(for: UITextField.textDidChangeNotification, object: self)
             .compactMap { $0.object as? UITextField }
             .compactMap(\.text)
+            .eraseToAnyPublisher()
+    }
+    
+    var editingDidBeginPublisher: AnyPublisher<Void, Never> {
+        controlPublisher(for: .editingDidBegin)
+            .map { _ in }
             .eraseToAnyPublisher()
     }
 }
