@@ -8,12 +8,16 @@
 import UIKit
 import Combine
 
-class TrendViewController: UIViewController {
+protocol TrendViewControllerProtocol {
+    var viewModel: TrendViewModel { get }
+}
+
+class TrendViewController: UIViewController, TrendViewControllerProtocol {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    private let viewModel = TrendViewModel()
+    var viewModel = TrendViewModel()
     private var cancellables: Set<AnyCancellable> = []
     
     deinit {
@@ -24,6 +28,7 @@ class TrendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.collectionViewLayout = PinterestLayout()
         if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
         }
@@ -43,7 +48,7 @@ class TrendViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink {
                 [weak self] gifModels in
-                self?.collectionView.reloadData()
+                self?.collectionView.reloadSections(IndexSet(integer: 0))
             }.store(in: &cancellables)
         
         //Error Handling
@@ -62,7 +67,7 @@ class TrendViewController: UIViewController {
                 [weak self] numberOfColumns in
                 let layout = self?.collectionView.collectionViewLayout as? PinterestLayout
                 layout?.changeNumberOfColumns(numberOfColumns: numberOfColumns)
-                self?.collectionView.reloadData()
+                self?.collectionView.reloadSections(IndexSet(integer: 0))
             }.store(in: &cancellables)
         
         //Fetch Gifs
@@ -100,14 +105,8 @@ extension TrendViewController: UICollectionViewDelegate, UICollectionViewDataSou
         return cell
     }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let position = scrollView.contentOffset.y
-        
-        if position > (collectionView.contentSize.height - scrollView.frame.size.height) {
-            guard !viewModel.isPaginating else {
-                return
-            }
-            
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.count - 10 && !viewModel.isPaginating {
             viewModel.fetchNextGifs()
         }
     }

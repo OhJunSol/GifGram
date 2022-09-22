@@ -167,14 +167,79 @@
                     <view key="view" contentMode="scaleToFill" id="p4f-eL-cOf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gif List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Po4-Yc-6aR">
+                                <rect key="frame" x="20" y="59" width="72.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gif Animation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmf-kB-gk4">
+                                <rect key="frame" x="20" y="151" width="140" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of columns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4wV-7s-nOF">
+                                <rect key="frame" x="20" y="93" width="127" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play or Stop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h45-jX-OEl">
+                                <rect key="frame" x="20" y="185" width="78" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gje-Te-dyL">
+                                <rect key="frame" x="0.0" y="150" width="414" height="1"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="bZc-sx-A0K"/>
+                                </constraints>
+                            </view>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Asr-Cs-RFA">
+                                <rect key="frame" x="345" y="151" width="51" height="31"/>
+                            </switch>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="seh-aq-DZQ">
+                                <rect key="frame" x="283" y="59" width="111" height="32"/>
+                                <segments>
+                                    <segment title="Two"/>
+                                    <segment title="Three"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="BDS-nv-Yag"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="h45-jX-OEl" firstAttribute="leading" secondItem="BDS-nv-Yag" secondAttribute="leading" constant="20" id="7zN-uY-nXP"/>
+                            <constraint firstItem="BDS-nv-Yag" firstAttribute="trailing" secondItem="Asr-Cs-RFA" secondAttribute="trailing" constant="20" id="8Co-f9-zFe"/>
+                            <constraint firstItem="dmf-kB-gk4" firstAttribute="top" secondItem="Gje-Te-dyL" secondAttribute="bottom" id="AFk-Ym-Ocm"/>
+                            <constraint firstItem="h45-jX-OEl" firstAttribute="top" secondItem="dmf-kB-gk4" secondAttribute="bottom" constant="5" id="DJu-RP-GCx"/>
+                            <constraint firstItem="4wV-7s-nOF" firstAttribute="leading" secondItem="BDS-nv-Yag" secondAttribute="leading" constant="20" id="FIu-qz-5oh"/>
+                            <constraint firstItem="Gje-Te-dyL" firstAttribute="leading" secondItem="p4f-eL-cOf" secondAttribute="leading" id="GY9-vg-9by"/>
+                            <constraint firstItem="Po4-Yc-6aR" firstAttribute="top" secondItem="BDS-nv-Yag" secondAttribute="top" constant="15" id="LAR-Qy-Ion"/>
+                            <constraint firstItem="4wV-7s-nOF" firstAttribute="top" secondItem="Po4-Yc-6aR" secondAttribute="bottom" constant="5" id="LNZ-gr-RdR"/>
+                            <constraint firstItem="dmf-kB-gk4" firstAttribute="leading" secondItem="BDS-nv-Yag" secondAttribute="leading" constant="20" id="Viz-zM-cfH"/>
+                            <constraint firstItem="seh-aq-DZQ" firstAttribute="top" secondItem="BDS-nv-Yag" secondAttribute="top" constant="15" id="YLu-ZW-9Qr"/>
+                            <constraint firstItem="Gje-Te-dyL" firstAttribute="top" secondItem="4wV-7s-nOF" secondAttribute="bottom" constant="40" id="abf-3l-rEJ"/>
+                            <constraint firstItem="Po4-Yc-6aR" firstAttribute="leading" secondItem="BDS-nv-Yag" secondAttribute="leading" constant="20" id="eT5-eo-App"/>
+                            <constraint firstAttribute="trailing" secondItem="Gje-Te-dyL" secondAttribute="trailing" id="lvt-kN-8QQ"/>
+                            <constraint firstItem="Asr-Cs-RFA" firstAttribute="top" secondItem="Gje-Te-dyL" secondAttribute="bottom" id="r3M-Se-uHb"/>
+                            <constraint firstItem="Asr-Cs-RFA" firstAttribute="top" secondItem="Gje-Te-dyL" secondAttribute="bottom" id="ruV-Cz-7Mx"/>
+                            <constraint firstItem="BDS-nv-Yag" firstAttribute="trailing" secondItem="seh-aq-DZQ" secondAttribute="trailing" constant="20" id="yCN-wo-mb3"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Setting" image="gearshape" catalog="system" id="qp0-P9-2oI"/>
+                    <connections>
+                        <outlet property="animationSwitch" destination="Asr-Cs-RFA" id="yfg-da-5ci"/>
+                        <outlet property="columnSegmentedControl" destination="seh-aq-DZQ" id="A9s-ay-aUs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nrz-A4-aSs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="443"/>
+            <point key="canvasLocation" x="1005.7971014492755" y="442.63392857142856"/>
         </scene>
         <!--Search-->
         <scene sceneID="87h-BZ-T7I">

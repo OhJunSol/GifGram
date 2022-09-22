@@ -9,7 +9,11 @@ import UIKit
 import SwiftyGif
 import Combine
 
-class GifCollectionViewCell: UICollectionViewCell {
+protocol GifCollectionViewCellProtocol {
+    var viewModel: GifViewModel? { get set }
+}
+
+class GifCollectionViewCell: UICollectionViewCell, GifCollectionViewCellProtocol {
     
     var viewModel: GifViewModel?
     private var cancellables: [AnyCancellable] = []
@@ -30,6 +34,7 @@ class GifCollectionViewCell: UICollectionViewCell {
                 .constraint(equalTo: self.contentView.bottomAnchor),
         ])
         
+        //Set downloading image
         self.imageView.image = UIImage(systemName: "photo.artframe")
     }
     
@@ -43,6 +48,7 @@ class GifCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        //Set downloading image when reuse
         if let image = UIImage(systemName: "photo.artframe") {
             self.imageView.setImage(image)
         }

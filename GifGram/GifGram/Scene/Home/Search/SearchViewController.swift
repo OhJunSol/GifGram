@@ -8,13 +8,17 @@
 import UIKit
 import Combine
 
-class SearchViewController: UIViewController {
+protocol SearchViewControllerProtocol {
+    var viewModel: SearchViewModel { get }
+}
+
+class SearchViewController: UIViewController, SearchViewControllerProtocol {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private let viewModel = SearchViewModel()
+    var viewModel = SearchViewModel()
     private var searchItem: DispatchWorkItem?
     private var cancellables: Set<AnyCancellable> = []
     
@@ -48,7 +52,7 @@ class SearchViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink {
                 [weak self] gifModels in
-                self?.collectionView.reloadData()
+                self?.collectionView.reloadSections(IndexSet(integer: 0))
             }.store(in: &cancellables)
         
         //Error Handling
@@ -67,7 +71,7 @@ class SearchViewController: UIViewController {
                 [weak self] numberOfColumns in
                 let layout = self?.collectionView.collectionViewLayout as? PinterestLayout
                 layout?.changeNumberOfColumns(numberOfColumns: numberOfColumns)
-                self?.collectionView.reloadData()
+                self?.collectionView.reloadSections(IndexSet(integer: 0))
             }.store(in: &cancellables)
         
         //Search text did changed
@@ -153,14 +157,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     //infinite scroll
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let position = scrollView.contentOffset.y
-        
-        if position > (collectionView.contentSize.height - scrollView.frame.size.height) {
-            guard !viewModel.isPaginating else {
-                return
-            }
-            
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.count - 10 && !viewModel.isPaginating {
             viewModel.fetchNextGifs()
         }
     }

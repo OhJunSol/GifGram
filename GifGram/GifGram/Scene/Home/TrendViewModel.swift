@@ -37,6 +37,23 @@ class TrendViewModel {
 
     var isPaginating: Bool = false
     
+    init () {
+        observeSettings()
+    }
+    
+    deinit {
+        cancellables.forEach{ $0.cancel() }
+        cancellables.removeAll()
+    }
+    
+    private func observeSettings() {
+        SettingManager.defaultManager.$numberOfColumns
+            .sink { [weak self] numberOfColumns in
+                guard let self = self else { return }
+                self.numberOfColumns = numberOfColumns
+            }.store(in: &cancellables)
+    }
+    
     func fetchNextGifs() {
     
         isPaginating = true

@@ -89,3 +89,21 @@ extension UIButton {
             .eraseToAnyPublisher()
     }
 }
+
+extension UISwitch {
+    var statePublisher: AnyPublisher<Bool, Never> {
+        controlPublisher(for: .valueChanged)
+            .map { $0 as! UISwitch }
+            .map { $0.isOn }
+            .eraseToAnyPublisher()
+    }
+}
+
+extension UISegmentedControl {
+    var selectionPublisher: AnyPublisher<Int, Never> {
+        controlPublisher(for: .valueChanged)
+            .map { $0 as! UISegmentedControl }
+            .map { $0.selectedSegmentIndex }
+            .eraseToAnyPublisher()
+    }
+}
