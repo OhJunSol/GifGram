@@ -8,9 +8,9 @@
 import Foundation
 
 struct Pagination {
-    let offset: Int
-    let total_count: Int
-    let count: Int
+    let offset: Int?
+    let total_count: Int?
+    let count: Int?
 }
 
 extension Pagination: Decodable {
