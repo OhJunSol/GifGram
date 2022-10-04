@@ -104,4 +104,5 @@ class SearchViewModel {
                 }
         }).store(in: &cancellables)
     }
+    
 }

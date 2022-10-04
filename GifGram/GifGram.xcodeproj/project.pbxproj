@@ -44,6 +44,13 @@
 		06B6407E28E6B35700A382AA /* CategoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6407D28E6B35700A382AA /* CategoryResponse.swift */; };
 		06B6408028E6B37600A382AA /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6407F28E6B37600A382AA /* Category.swift */; };
 		06B6408228E6B39000A382AA /* Subcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6408128E6B39000A382AA /* Subcategory.swift */; };
+		06B6408428E6C3DB00A382AA /* Resource + TrendingSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6408328E6C3DB00A382AA /* Resource + TrendingSearch.swift */; };
+		06B6408628E6C3F800A382AA /* TrendingSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6408528E6C3F800A382AA /* TrendingSearchResponse.swift */; };
+		06B6408A28E99E1900A382AA /* SearchEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06B6408928E99E1900A382AA /* SearchEmptyView.xib */; };
+		06B6408C28E99E2300A382AA /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6408B28E99E2300A382AA /* SearchEmptyView.swift */; };
+		06B6408E28EAB30400A382AA /* WordWrapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6408D28EAB30400A382AA /* WordWrapCell.swift */; };
+		06B6409328EABA1100A382AA /* SearchEmptyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6409228EABA1100A382AA /* SearchEmptyViewModel.swift */; };
+		06B6409628EC1A1900A382AA /* UIView + Inspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B6409528EC1A1900A382AA /* UIView + Inspector.swift */; };
 		43889CD31C61954434495AF4 /* Pods_GifGram_GifGramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DF46DBD3BED2E1E0907B8A /* Pods_GifGram_GifGramUITests.framework */; };
 		79B03A6D86109C1F8B93B483 /* Pods_GifGramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67D2473BDC2A0F436C6410E /* Pods_GifGramTests.framework */; };
 		B430AD29FD5E55BF732D969C /* Pods_GifGram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F40D5122BFC0A533D572B7 /* Pods_GifGram.framework */; };
@@ -109,6 +116,13 @@
 		06B6407D28E6B35700A382AA /* CategoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryResponse.swift; sourceTree = "<group>"; };
 		06B6407F28E6B37600A382AA /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		06B6408128E6B39000A382AA /* Subcategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subcategory.swift; sourceTree = "<group>"; };
+		06B6408328E6C3DB00A382AA /* Resource + TrendingSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resource + TrendingSearch.swift"; sourceTree = "<group>"; };
+		06B6408528E6C3F800A382AA /* TrendingSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingSearchResponse.swift; sourceTree = "<group>"; };
+		06B6408928E99E1900A382AA /* SearchEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchEmptyView.xib; sourceTree = "<group>"; };
+		06B6408B28E99E2300A382AA /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
+		06B6408D28EAB30400A382AA /* WordWrapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordWrapCell.swift; sourceTree = "<group>"; };
+		06B6409228EABA1100A382AA /* SearchEmptyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyViewModel.swift; sourceTree = "<group>"; };
+		06B6409528EC1A1900A382AA /* UIView + Inspector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Inspector.swift"; sourceTree = "<group>"; };
 		08AB8ED50A972D55E736BF7A /* Pods-GifGramTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifGramTests.debug.xcconfig"; path = "Target Support Files/Pods-GifGramTests/Pods-GifGramTests.debug.xcconfig"; sourceTree = "<group>"; };
 		664BDCD21C6D4DE41F9A55A4 /* Pods-GifGram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifGram.debug.xcconfig"; path = "Target Support Files/Pods-GifGram/Pods-GifGram.debug.xcconfig"; sourceTree = "<group>"; };
 		9DDB3FAE097802789C1618F6 /* Pods-GifGram-GifGramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GifGram-GifGramUITests.release.xcconfig"; path = "Target Support Files/Pods-GifGram-GifGramUITests/Pods-GifGram-GifGramUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,9 +186,9 @@
 		06AC419D28DBA6EA00D09C19 /* GifGram */ = {
 			isa = PBXGroup;
 			children = (
-				06AC41D228DBA76000D09C19 /* Model */,
 				06AC41D128DBA75400D09C19 /* Utils */,
 				06AC41D028DBA74E00D09C19 /* Common */,
+				06AC41D228DBA76000D09C19 /* Model */,
 				06AC41CF28DBA73A00D09C19 /* Scene */,
 				06AC41CE28DBA73200D09C19 /* Service */,
 				06AC419E28DBA6EA00D09C19 /* AppDelegate.swift */,
@@ -226,7 +240,6 @@
 		06AC41D028DBA74E00D09C19 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				06B6406A28DCD25600A382AA /* ViewModel */,
 				06B6406528DCD09D00A382AA /* UI */,
 			);
 			path = Common;
@@ -237,6 +250,7 @@
 			children = (
 				06AC41DD28DBB6E000D09C19 /* UIKit + Publisher.swift */,
 				06B6405028DCCE2D00A382AA /* Utils + Publisher.swift */,
+				06B6409528EC1A1900A382AA /* UIView + Inspector.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -252,6 +266,7 @@
 				06B6404E28DCCD1000A382AA /* DownsizedImage.swift */,
 				06B6407F28E6B37600A382AA /* Category.swift */,
 				06B6408128E6B39000A382AA /* Subcategory.swift */,
+				06B6404828DCCCCC00A382AA /* Pagination.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -269,6 +284,7 @@
 		06AC41D428DBA77700D09C19 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				06B6409128EAB5D900A382AA /* SearchEmptyView */,
 				06AC41D628DBA78D00D09C19 /* SearchViewController.swift */,
 				06B6406D28DCD30B00A382AA /* SearchViewModel.swift */,
 			);
@@ -287,8 +303,8 @@
 			isa = PBXGroup;
 			children = (
 				06B6404628DCCCB900A382AA /* GifResponse.swift */,
-				06B6404828DCCCCC00A382AA /* Pagination.swift */,
 				06B6407D28E6B35700A382AA /* CategoryResponse.swift */,
+				06B6408528E6C3F800A382AA /* TrendingSearchResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -319,6 +335,7 @@
 				06B6406128DCD01B00A382AA /* Resource + TrendingGifs.swift */,
 				06B6406328DCD02600A382AA /* Resource + Search.swift */,
 				06B6407B28E6B2C800A382AA /* Resource + Categories.swift */,
+				06B6408328E6C3DB00A382AA /* Resource + TrendingSearch.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -326,18 +343,46 @@
 		06B6406528DCD09D00A382AA /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				06B6406628DCD0AC00A382AA /* PinterestLayout.swift */,
-				06B6406828DCD0BD00A382AA /* GifCollectionViewCell.swift */,
+				06B6409428EABAA400A382AA /* WordWrapCell */,
+				06B6409028EAB5CD00A382AA /* Layout */,
+				06B6408F28EAB5B700A382AA /* GifCell */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		06B6406A28DCD25600A382AA /* ViewModel */ = {
+		06B6408F28EAB5B700A382AA /* GifCell */ = {
 			isa = PBXGroup;
 			children = (
 				06B6406B28DCD26200A382AA /* GifViewModel.swift */,
+				06B6406828DCD0BD00A382AA /* GifCollectionViewCell.swift */,
 			);
-			path = ViewModel;
+			path = GifCell;
+			sourceTree = "<group>";
+		};
+		06B6409028EAB5CD00A382AA /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				06B6406628DCD0AC00A382AA /* PinterestLayout.swift */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		06B6409128EAB5D900A382AA /* SearchEmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				06B6408928E99E1900A382AA /* SearchEmptyView.xib */,
+				06B6408B28E99E2300A382AA /* SearchEmptyView.swift */,
+				06B6409228EABA1100A382AA /* SearchEmptyViewModel.swift */,
+			);
+			path = SearchEmptyView;
+			sourceTree = "<group>";
+		};
+		06B6409428EABAA400A382AA /* WordWrapCell */ = {
+			isa = PBXGroup;
+			children = (
+				06B6408D28EAB30400A382AA /* WordWrapCell.swift */,
+			);
+			path = WordWrapCell;
 			sourceTree = "<group>";
 		};
 		A556901CD20123C5DBA6AF3C /* Pods */ = {
@@ -472,6 +517,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06B6408A28E99E1900A382AA /* SearchEmptyView.xib in Resources */,
 				06AC41AB28DBA6EB00D09C19 /* LaunchScreen.storyboard in Resources */,
 				06AC41A828DBA6EB00D09C19 /* Assets.xcassets in Resources */,
 				06AC41A628DBA6EB00D09C19 /* Main.storyboard in Resources */,
@@ -619,12 +665,16 @@
 				06AC41D928DBA79600D09C19 /* SettingViewController.swift in Sources */,
 				06B6404728DCCCB900A382AA /* GifResponse.swift in Sources */,
 				06B6407028DCDADB00A382AA /* TrendViewModel.swift in Sources */,
+				06B6409628EC1A1900A382AA /* UIView + Inspector.swift in Sources */,
 				06B6404B28DCCCE400A382AA /* GifImages.swift in Sources */,
 				06AC41A128DBA6EB00D09C19 /* SceneDelegate.swift in Sources */,
 				06B6404428DCCBED00A382AA /* GifMeta.swift in Sources */,
 				06B6406028DCD00E00A382AA /* Resource.swift in Sources */,
+				06B6408E28EAB30400A382AA /* WordWrapCell.swift in Sources */,
 				06B6407E28E6B35700A382AA /* CategoryResponse.swift in Sources */,
+				06B6408628E6C3F800A382AA /* TrendingSearchResponse.swift in Sources */,
 				06B6404928DCCCCC00A382AA /* Pagination.swift in Sources */,
+				06B6408C28E99E2300A382AA /* SearchEmptyView.swift in Sources */,
 				06B6406E28DCD30B00A382AA /* SearchViewModel.swift in Sources */,
 				06B6405628DCCE8B00A382AA /* CacheManager.swift in Sources */,
 				06B6405D28DCCFE400A382AA /* NetworkServiceType.swift in Sources */,
@@ -632,6 +682,8 @@
 				06B6406C28DCD26200A382AA /* GifViewModel.swift in Sources */,
 				06B6404228DCCBE200A382AA /* Gif.swift in Sources */,
 				06B6406228DCD01B00A382AA /* Resource + TrendingGifs.swift in Sources */,
+				06B6408428E6C3DB00A382AA /* Resource + TrendingSearch.swift in Sources */,
+				06B6409328EABA1100A382AA /* SearchEmptyViewModel.swift in Sources */,
 				06AC41DE28DBB6E000D09C19 /* UIKit + Publisher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

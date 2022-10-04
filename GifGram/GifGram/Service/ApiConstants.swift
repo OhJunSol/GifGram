@@ -12,4 +12,5 @@ struct ApiConstants {
     static let trendingUrl = URL(string: "https://api.giphy.com/v1/gifs/trending")!
     static let searchUrl = URL(string: "https://api.giphy.com/v1/gifs/search")!
     static let categoriesUrl = URL(string: "https://api.giphy.com/v1/gifs/categories")!
+    static let trendingSearchTermsUrl = URL(string: "https://api.giphy.com/v1/trending/searches")!
 }

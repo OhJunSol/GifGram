@@ -15,40 +15,6 @@ protocol PinterestLayoutDelegate: AnyObject {
     func numberOfItemsInCollectionView() -> Int
 }
 
-//class PinterestLayout: UICollectionViewFlowLayout {
-//    weak var delegate: PinterestLayoutDelegate?
-//    override init() {
-//        super.init()
-//
-//        let screenWidth = UIScreen.main.bounds.width
-//        let widthHeightConstant = UIScreen.main.bounds.width / 3.5
-//        self.itemSize = CGSize(width: widthHeightConstant,
-//                               height: widthHeightConstant)
-//        let numberOfCellsInRow = floor(screenWidth / widthHeightConstant)
-//        let inset = (screenWidth - (numberOfCellsInRow * widthHeightConstant)) / (numberOfCellsInRow + 1)
-//        self.sectionInset = .init(top: inset,
-//                                  left: inset,
-//                                  bottom: inset,
-//                                  right: inset)
-//        self.minimumInteritemSpacing = inset
-//        self.minimumLineSpacing = inset
-//        self.scrollDirection = .vertical
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-////        fatalError("init(coder:) has not been implemented")
-//    }
-//
-//    func reset() {
-//    }
-//
-//    func changeNumberOfColumns(numberOfColumns: Int) {
-//    }
-//
-//}
-
-
 class PinterestLayout: UICollectionViewLayout {
     weak var delegate: PinterestLayoutDelegate?
     

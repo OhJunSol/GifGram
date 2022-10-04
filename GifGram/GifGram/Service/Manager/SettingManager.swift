@@ -15,4 +15,6 @@ class SettingManager: NSObject {
     @Published var numberOfColumns: Int = 2
     
     @Published var isAnimating: Bool = true
+    
+    @Published var trendingSearchTerms: [String] = []
 }

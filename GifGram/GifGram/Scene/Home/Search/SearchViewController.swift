@@ -13,7 +13,7 @@ protocol SearchViewControllerProtocol {
 }
 
 class SearchViewController: UIViewController, SearchViewControllerProtocol {
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -27,12 +27,14 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
         cancellables.removeAll()
     }
     
+    lazy var searchEmptyView = SearchEmptyView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.keyboardDismissMode = .onDrag
         collectionView.backgroundColor = .clear
         collectionView.register(GifCollectionViewCell.self,
-                                     forCellWithReuseIdentifier: "Cell")
+                                forCellWithReuseIdentifier: "Cell")
         
         if let layout = collectionView?.collectionViewLayout as? PinterestLayout {
             layout.delegate = self
@@ -46,6 +48,9 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
             [weak self] _ in
             self?.navigationController?.popViewController(animated: false)
         }.store(in: &cancellables)
+        
+        //Set empty state view of collectionView
+        setEmptyPage()
         
         bind(viewModel: self.viewModel)
         
@@ -72,6 +77,24 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2),
                                               execute: requestWorkItem)
             }.store(in: &cancellables)
+    }
+    
+    private func setEmptyPage() {
+        let backgroundView = UIView()
+        collectionView.backgroundView = backgroundView
+        collectionView.backgroundView?.addSubview(searchEmptyView)
+        searchEmptyView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            searchEmptyView.centerXAnchor.constraint(equalTo:backgroundView.centerXAnchor),
+            searchEmptyView.centerYAnchor.constraint(equalTo:backgroundView.centerYAnchor),
+            searchEmptyView.widthAnchor.constraint(equalTo: backgroundView.widthAnchor),
+            searchEmptyView.heightAnchor.constraint(equalTo: backgroundView.heightAnchor),
+        ])
+        
+        let searchEmptyViewModel = SearchEmptyViewModel()
+        self.searchEmptyView.bind(viewModel: searchEmptyViewModel)
+        self.searchEmptyView.delegate = self
     }
     
     private func bind(viewModel: SearchViewModel) {
@@ -101,8 +124,9 @@ class SearchViewController: UIViewController, SearchViewControllerProtocol {
                 layout?.changeNumberOfColumns(numberOfColumns: numberOfColumns)
                 self?.collectionView.reloadSections(IndexSet(integer: 0))
             }.store(in: &cancellables)
+        
     }
-
+    
     private func reset() {
         let layout = collectionView.collectionViewLayout as? PinterestLayout
         layout?.reset()
@@ -148,6 +172,14 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        //Empty state view
+        
+        if viewModel.count == 0 {
+            self.collectionView.backgroundView?.isHidden = false
+        } else {
+            self.collectionView.backgroundView?.isHidden = true
+        }
+        
         return viewModel.count
     }
     
@@ -175,9 +207,7 @@ extension SearchViewController: PinterestLayoutDelegate {
         return viewModel.count
     }
     
-  func collectionView(
-    _ collectionView: UICollectionView,
-    heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat {
         
         let insets = collectionView.contentInset
         let collectionViewWidth = collectionView.bounds.width - (insets.left + insets.right)
@@ -187,5 +217,16 @@ extension SearchViewController: PinterestLayoutDelegate {
         let ratio = collectionViewWidth / CGFloat(viewModel.numberOfColumns) / width
         
         return height * ratio
-  }
+    }
 }
+
+//Search empty view delegate
+extension SearchViewController: SearchItemDelegate {
+    func searchItemSelected(item: String) {
+        self.search(query: item)
+        self.searchBar.text = item
+    }
+
+}
+
+
