@@ -74,7 +74,7 @@ class TrendViewController: UIViewController, TrendViewControllerProtocol {
                 [weak self] numberOfColumns in
                 let layout = self?.collectionView.collectionViewLayout as? PinterestLayout
                 layout?.numberOfColumns = numberOfColumns
-                self?.collectionView.reloadSections(IndexSet(integer: 0))
+                self?.collectionView.collectionViewLayout.invalidateLayout()
             }.store(in: &cancellables)
     }
 

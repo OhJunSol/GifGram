@@ -15,7 +15,6 @@ final class NetworkService: NetworkServiceType {
         self.session = session
     }
 
-    @discardableResult
     func load<T>(_ resource: Resource<T>) -> AnyPublisher<T, Error> {
         guard let request = resource.request else {
             return .fail(NetworkError.invalidRequest)
