@@ -18,7 +18,13 @@ protocol PinterestLayoutDelegate: AnyObject {
 class PinterestLayout: UICollectionViewLayout {
     weak var delegate: PinterestLayoutDelegate?
     
-    private var numberOfColumns = 2
+    var numberOfColumns = 2 {
+        didSet {
+            reset()
+            update()
+        }
+    }
+    
     private let cellPadding: CGFloat = 6
     
     private var cache: [UICollectionViewLayoutAttributes] = []
@@ -43,13 +49,6 @@ class PinterestLayout: UICollectionViewLayout {
         cache.removeAll()
         contentHeight = 0
         maxYOffset.removeAll()
-    }
-    
-    func changeNumberOfColumns(numberOfColumns: Int) {
-        guard self.numberOfColumns != numberOfColumns else { return }
-        self.numberOfColumns = numberOfColumns
-        reset()
-        update()
     }
     
     override func prepare() {
