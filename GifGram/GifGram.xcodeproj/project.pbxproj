@@ -187,7 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				06AC41D128DBA75400D09C19 /* Utils */,
-				06AC41D028DBA74E00D09C19 /* Common */,
 				06AC41D228DBA76000D09C19 /* Model */,
 				06AC41CF28DBA73A00D09C19 /* Scene */,
 				06AC41CE28DBA73200D09C19 /* Service */,
@@ -231,6 +230,7 @@
 		06AC41CF28DBA73A00D09C19 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				06AC41D028DBA74E00D09C19 /* Common */,
 				06AC41D528DBA77F00D09C19 /* Setting */,
 				06AC41D328DBA77300D09C19 /* Home */,
 			);
