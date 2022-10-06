@@ -55,7 +55,7 @@ class GifGramTests: XCTestCase {
     func test_loadFailedWithRequestError() throws {
         
         //Given
-        let url = URL(string: "api.giphy.com/v1/gifs/search")! //protocol 제거
+        let url = URL(string: "api.giphy.com/v1/gifs/search")! //removed protocol
         let parameters: [String : CustomStringConvertible] = [
             "api_key": ApiConstants.apiKey,
             "q": "joker",
@@ -88,7 +88,7 @@ class GifGramTests: XCTestCase {
     func test_loadFailedWithInternalError() throws {
         
         //Given
-        let url = URL(string: "https://api.giphy.com/v1/gifs/search/wrongURL")! //잘못된 URL
+        let url = URL(string: "https://api.giphy.com/v1/gifs/search/wrongURL")! //Wrong URL
         let parameters: [String : CustomStringConvertible] = [
             "api_key": ApiConstants.apiKey,
             "q": "joker",
